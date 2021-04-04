@@ -1,3 +1,5 @@
+
+
 -- if database exists, delete it and recreate it
 DROP database IF EXISTS videoStore;
 CREATE database videoStore;
@@ -116,6 +118,15 @@ INSERT INTO Person VALUES (4, 'Fritz Paz', '2872092983', 'fpaz@yahoo.com', '03/0
 INSERT INTO Person VALUES (5, 'Layo Olagoke', '9273450736', 'layo@gmail.com', '03/12/2000', 't', 'f');
 INSERT INTO Person VALUES (6, 'Cameron Ponce', '239598898', 'Cponce@yahoo.com', '01/03/2003', 't', 'f');
 INSERT INTO Person VALUES (7, 'Florence Laz', '1432092921', 'flaz@outlook.com', '03/06/2004', 't', 'f');
+INSERT INTO Person VALUES (24, 'Bob Ross', '1231118765', 'bross@mail.com', '03/06/1944', 't', 'f');
+INSERT INTO Person VALUES (25, 'Bob Ross jr', '4012231534', 'brossjr@mail.com', '03/06/1984', 't', 'f');
+INSERT INTO Person VALUES (26, 'Jane Good', '8123321654', 'janeG@mail.com', '01/26/1974', 't', 'f');
+INSERT INTO Person VALUES (27, 'George Noble', '2143546677', 'gnoble@mail.com', '03/06/1933', 't', 'f');
+INSERT INTO Person VALUES (28, 'Chris Wild', NULL, 'chrisw@mail.com', '02/17/1984', 't', 'f');
+INSERT INTO Person VALUES (29, 'Marge Simpson', '8089765423', 'marges@mail.com', '11/16/1974', 't', 'f');
+INSERT INTO Person VALUES (30, 'Bob Chris', '2143546677', 'bobChris@mail.com', '12/25/1983', 't', 'f');
+INSERT INTO Person VALUES (31, 'Shawn Grey', NULL, 'shawnnnn@mail.com', '12/17/1984', 't', 'f');
+INSERT INTO Person VALUES (32, 'Jenny W', '8089765423', 'jennyrocks@mail.com', '11/01/1984', 't', 'f');
 
 -- Data for person. Customers only
 INSERT INTO Person VALUES (8, 'John Doe', '4071112222', 'jdoe@email.com', '03/06/1950', 'f', 't');
@@ -128,7 +139,11 @@ INSERT INTO Person VALUES (14, 'John Deer', '4321112222', 'jdeer@email.com', '03
 INSERT INTO Person VALUES (15, 'Sally Ride', '7775261432', 'sride@email.com', '11/22/1954', 'f', 't');
 INSERT INTO Person VALUES (21, 'Karen Right', NULL, 'karenRIGHT@email.com', '12/03/1977', 'f', 't');
 INSERT INTO Person VALUES (22, 'Mary Jane', '5094201943', 'mj@email.com', '05/20/1995', 'f', 't');
-INSERT INTO Person VALUES (23, 'Mary Jane', '4071651122', NULL, '05/12/1997', 'f', 't');
+INSERT INTO Person VALUES (23, 'Mary Doe', '4071651122', 'mdoe@email.com', '02/22/2002', 'f', 't');
+INSERT INTO Person VALUES (33, 'Sierra Doe', '4071734382', 'sdoe@gmail.com', '01/17/1998', 'f', 't');
+INSERT INTO Person VALUES (34, 'Mary Women', '4072856183', NULL, '07/02/1955', 'f', 't');
+INSERT INTO Person VALUES (35, 'Vincent Adultman', '4076548521', 'vadultman@realmail.com', '08/12/1964', 'f', 't');
+INSERT INTO Person VALUES (36, 'Mclovin', '4079843578', 'mclovin@hawaii.com', '06/03/1981', 'f', 't');
 
 -- Data for person. Customer and Employee
 INSERT INTO Person VALUES (16, 'Alice Grace', '1212341098', 'agrace@email.com', '05/01/1998', 't', 't');
@@ -151,7 +166,15 @@ INSERT INTO Employee VALUES (17, 'Cashier', 33000);
 INSERT INTO Employee VALUES (18, 'Cashier', 11000);
 INSERT INTO Employee VALUES (19, 'Programmer', 95000);
 INSERT INTO Employee VALUES (20, 'Cashier', 15000);
-
+INSERT INTO Employee VALUES (24, 'Cashier', 20000);
+INSERT INTO Employee VALUES (25, 'Cashier', 20000);
+INSERT INTO Employee VALUES (26, 'Programmer', 97000);
+INSERT INTO Employee VALUES (27, 'Cashier', 12000);
+INSERT INTO Employee VALUES (28, 'Manager', 150000);
+INSERT INTO Employee VALUES (29, 'Front end developer', 100000);
+INSERT INTO Employee VALUES (30,'Programmer', 80000);
+INSERT INTO Employee VALUES (31, 'Cashier', 33000);
+INSERT INTO Employee VALUES (32, 'Cashier', 11000);
 
 -- Data for Customer: ~ID(Must match a PID), Membership(Gold, Silver, or Bronze)
 INSERT INTO Customer VALUES (8,'Gold'); 
@@ -169,6 +192,12 @@ INSERT INTO Customer VALUES (19,'Gold');
 INSERT INTO Customer VALUES (20,'Bronze'); 
 INSERT INTO Customer VALUES (21,'Gold'); 
 INSERT INTO Customer VALUES (22,'Bronze'); 
+INSERT INTO Customer VALUES (23, 'Silver');
+INSERT INTO Customer VALUES (33, 'Gold');
+INSERT INTO Customer VALUES (34, 'Silver');
+INSERT INTO Customer VALUES (35, 'Bronze');
+INSERT INTO Customer VALUES (36, 'Gold');
+
 
 
 -- BASE TABLE Item: ID, name, cost, rating, type (g or c) 
