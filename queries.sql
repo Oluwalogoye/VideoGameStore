@@ -52,5 +52,12 @@ select *
 from Order_t
 where (orderDate like '%2021');
 
+-- update Elon Musks, PID 13, birthday
+
+update person
+set birthdate = '07/28/1971'
+where PID = 13;
+
+
 
 commit; 
