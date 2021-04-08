@@ -1,4 +1,9 @@
-
+/* 
+Group 1: Samuel Solomon, Fritz Paz, Cameron Dolly, Logo Olagoke
+CMS 375 Phase 4
+Implementation
+Creation and Population file
+*/
 
 -- if database exists, delete it and recreate it
 DROP database IF EXISTS videoStore;
@@ -199,7 +204,6 @@ INSERT INTO Customer VALUES (35, 'Silver');
 INSERT INTO Customer VALUES (36, 'Silver');
 
 
-
 -- BASE TABLE Item: ID, name, cost, rating, type (g or c) 
 -- Data for Item: games
 INSERT INTO Item VALUES (1, 'FIFA 14', 90, 5, 'g');
@@ -249,8 +253,6 @@ INSERT INTO Item VALUES (42, 'PSP 2000', 200, 2, 'c');
 INSERT INTO Item VALUES (43, 'PS5 Classic', 500, 3, 'c');
 INSERT INTO Item VALUES (44, 'PS 2 Retro', 220, 2, 'c');
 INSERT INTO Item VALUES (45, 'PS Django', 100, 5, 'c');
-
-
 
 
 -- Data for Order: OrderNum, ~Customer ID, ~Employee ID, Order Time (Military), Order Date
@@ -567,7 +569,6 @@ INSERT INTO OrderItems Values (149, 38);
 INSERT INTO OrderItems Values (150, 15);
 
 
-
 -- Data for BASE TABLE Publisher: ID, Founder, HQ
 INSERT INTO Publisher Values (1,'Take 2', 'Los Angeles, CA');
 INSERT INTO Publisher Values (2,'Notch', 'Orlando, FL');
@@ -589,9 +590,6 @@ INSERT INTO Publisher Values (17,'Bandai Namco','Okinawa, JP');
 INSERT INTO Publisher Values (18,'Blizzard','Los Angeles, CA');
 INSERT INTO Publisher Values (19,'SEGA','Tokyo, JP');
 INSERT INTO Publisher Values (20,'Riot Games','San Diego, CA');
-
-
-
 
 
 -- Data for Game: ~ID, ~Publisher ID, Rating, Category
@@ -620,8 +618,6 @@ INSERT INTO Game Values(21,13,'M','Role-playing');
 INSERT INTO Game Values(22,8,'M','Other');
 INSERT INTO Game Values(23,20,'PG13','Fighting');
 INSERT INTO Game Values(24,2,'R','Action');
-
-
 
 
 -- Data for Console: ~ID, -PublisherID, Color
