@@ -52,7 +52,7 @@ select *
 from Publisher;
 
 \! echo 'What action games are in the store?'
-select item.name, game.category
+select item.Name as 'Action Games'
 from Item, Game
 where item.itemid=game.gameid
 and category ='Action';
@@ -96,7 +96,7 @@ from Item
 where Price <= 20 and Itype='g';
 
 \! echo 'What is Alans salary?'
-select employee.salary as 'Alans salary'
+select concat(employee.salary, '$ a year') as 'Alans salary'
 from Person, Employee
 where employee.epid=person.pid
 and Name = 'Alan';
@@ -109,50 +109,55 @@ where item.itemid=game.gameid
 and rating = 'R';
 
 \! echo 'What year was Mclovin born?'
-select substring(birthdate,7,10) as 'Birth year'
+select year(str_to_date(person.birthdate, '%m/%d/%Y')) as 'Birth year'
+from person
+where name = 'Mclovin';
+
+\! echo 'How old is Mclovin?'
+select timestampdiff(year,str_to_date(person.birthdate, '%m/%d/%Y'),curdate()) as 'Age'
 from person
 where name = 'Mclovin';
 
 \! echo 'Can Mclovin buy an R rated game?'
 select if(
-(select substring(birthdate,7,10)
+(select timestampdiff(year,str_to_date(person.birthdate, '%m/%d/%Y'),curdate())
 from person
-where name = 'Mclovin') < year(curdate())-18,
+where name = 'Mclovin') > 18,
 'Yes',
 'No')
 as 'Is Mclovin 18+?';
 
 \! echo 'Can Ethan Marc buy an R rated game?'
 select if(
-(select substring(birthdate,7,10)
+(select timestampdiff(year,str_to_date(person.birthdate, '%m/%d/%Y'),curdate())
 from person
-where name = 'Ethan Marc') < year(curdate())-18,
+where name = 'Ethan Marc') > 18,
 'Yes',
 'No')
 as 'Is Ethan 18+?';
 
-\! echo 'Show all orders from 2021'
+\! echo 'Show all orders from 2019'
 select *
 from Order_t
-where (orderDate like '%2021');
+where (orderDate like '%2019');
 
-\! echo 'Update Elon Musks, PID 13, birthday'
+\! echo 'Update PID 13s birthday'
 update person
 set birthdate = '07/28/1971'
 where PID = 13;
 
-\! echo 'Whats the id for the PS3 V2?'
-select itemid as 'ID'
+\! echo 'Whats the ID for the PS3 V2?'
+select itemid as 'PS3 V2 ID'
 from item
 where name = 'PS3 V2';
 
 \! echo 'What items are in order number 19'
-select item.name
+select item.name as 'Order 19 items'
 from item, OrderItems
 where item.itemid = orderitems.itemid
 and ordernumber = 19;
 
-\! echo 'Who is a cashier at the store?'
+\! echo 'Who are the cashiers at the store?'
 select name as 'Cashiers'
 from person,employee
 where person.pid = employee.epid
@@ -165,13 +170,13 @@ where person.pid = customer.cpid
 and customer.membership = 'Gold';
 
 \! echo 'Which consoles come in white?'
-select name
+select Name
 from item, console
 where item.itemid = console.consoleid
 and console.color = 'White';
 
-\! echo 'What is the total order number 19'
-select sum(item.price) as 'Order 19 sum'
+\! echo 'What is the total for order 19?'
+select concat(sum(item.price), '$' ) as 'Total'
 from item, OrderItems
 where item.itemid = orderitems.itemid
 and ordernumber = 19;
@@ -186,7 +191,7 @@ and person.name = 'Karen Right'
 and order_t.orderdate = '11/30/2020';
 
 \! echo 'How much did Karen Right pay in total on 11/30/2020'
-select sum(item.price) as 'Karens total'
+select concat(sum(item.price), '$') as 'Karens total'
 from item, OrderItems, order_t, Person
 where item.itemid = orderitems.itemid
 and order_t.ordernumber = orderitems.ordernumber
@@ -194,11 +199,15 @@ and order_t.customerId = person.pid
 and person.name = 'Karen Right'
 and order_t.orderdate = '11/30/2020';
 
-\! echo 'Which employee checked out sally ride on 08/17/2021?'
-select distinct person.name
+\! echo 'Which employee checked out Sally Ride on 08/17/2021?'
+select distinct person.Name
 from order_t, person
 where person.pid = order_t.employeeid
-and customerId = 15
+and customerId = (
+	select pid
+	from person
+	where name = 'Sally Ride'
+	)
 and orderdate = '08/17/2020';
 
 commit; 
