@@ -1,6 +1,5 @@
 
 
-
 -- if database exists, delete it and recreate it
 DROP database IF EXISTS videoStore;
 CREATE database videoStore;
@@ -255,17 +254,17 @@ INSERT INTO Item VALUES (45, 'PS Django', 100, 5, 'c');
 
 
 -- Data for Order: OrderNum, ~Customer ID, ~Employee ID, Order Time (Military), Order Date
-INSERT INTO Order_t VALUES (1, 8, 1, 1200, '01/31/2020');
-INSERT INTO Order_t VALUES (2, 9, 2, 1400, '02/31/2020');
-INSERT INTO Order_t VALUES (3, 10, 3, 0800, '03/01/2020');
-INSERT INTO Order_t VALUES (4, 11, 4, 0100, '03/15/2020');
-INSERT INTO Order_t VALUES (5, 12, 6, 1500, '05/17/2020');
-INSERT INTO Order_t VALUES (6, 13, 7, 0900, '05/25/2020');
-INSERT INTO Order_t VALUES (7, 14, 16, 0400, '07/15/2020');
-INSERT INTO Order_t VALUES (8, 15, 17, 1100, '08/17/2020');
-INSERT INTO Order_t VALUES (9, 21, 18, 0800, '11/25/2020');
-INSERT INTO Order_t VALUES (10, 22, 19, 2200, '12/15/2020');
-INSERT INTO Order_t VALUES (11, 8, 20, 1000, '12/15/2020');
+INSERT INTO Order_t VALUES (1, 8, 1, 1200, '01/31/2019');
+INSERT INTO Order_t VALUES (2, 9, 2, 1400, '02/31/2019');
+INSERT INTO Order_t VALUES (3, 10, 3, 0800, '03/01/2019');
+INSERT INTO Order_t VALUES (4, 11, 4, 0100, '03/15/2019');
+INSERT INTO Order_t VALUES (5, 12, 6, 1500, '05/17/2019');
+INSERT INTO Order_t VALUES (6, 13, 7, 0900, '05/25/2019');
+INSERT INTO Order_t VALUES (7, 14, 16, 0400, '07/15/2019');
+INSERT INTO Order_t VALUES (8, 15, 17, 1100, '08/17/2019');
+INSERT INTO Order_t VALUES (9, 21, 18, 0800, '11/25/2019');
+INSERT INTO Order_t VALUES (10, 22, 19, 2200, '12/15/2019');
+INSERT INTO Order_t VALUES (11, 8, 20, 1000, '12/15/2019');
 INSERT INTO Order_t VALUES (12, 11, 5, 0100, '05/15/2020');
 INSERT INTO Order_t VALUES (13, 8, 1, 1200, '01/31/2021');
 INSERT INTO Order_t VALUES (14, 9, 2, 1400, '02/31/2021');
@@ -570,8 +569,8 @@ INSERT INTO OrderItems Values (150, 15);
 
 
 -- Data for BASE TABLE Publisher: ID, Founder, HQ
-INSERT INTO Publisher Values (1,'Bob Martin', 'Los Angeles, CA');
-INSERT INTO Publisher Values (2,'Fritz Paz', 'Orlando, FL');
+INSERT INTO Publisher Values (1,'Take 2', 'Los Angeles, CA');
+INSERT INTO Publisher Values (2,'Notch', 'Orlando, FL');
 INSERT INTO Publisher Values (3,'Linus Torvald','Helsinky, FI');
 INSERT INTO Publisher Values (4,'Notch','Stockholm, SW');
 INSERT INTO Publisher Values (5,'EA Sports','Redwood City, CA');
@@ -581,7 +580,7 @@ INSERT INTO Publisher Values (8,'Nintendo','Kyoto, JP');
 INSERT INTO Publisher Values (9,'Microsoft','Redmond, WA');
 INSERT INTO Publisher Values (10,'Rockstar Games','New York, NY');
 INSERT INTO Publisher Values (11,'Sony Entertainment','Tokyo, JP');
-INSERT INTO Publisher Values (12,'Atari','Sunnyvale, CA');
+INSERT INTO Publisher Values (12,'Notch','Sunnyvale, CA');
 INSERT INTO Publisher Values (13,'Square Enix','Kyoto, JP');
 INSERT INTO Publisher Values (14,'505 Games','Milan, IT');
 INSERT INTO Publisher Values (15,'Slitherine Strategies','London, UK');
@@ -651,4 +650,3 @@ INSERT INTO Console Values(44, 18, 'White');
 INSERT INTO Console Values(45, 19, 'Grey');
 
 commit;
-
