@@ -57,14 +57,14 @@ from Item, Game
 where item.itemid=game.gameid
 and category ='Action';
 
-\! echo 'Is GTA avalible in the store?'
+\! echo 'Is Minecraft avalible in the store?'
 select if(exists(
 select Name
 from Item
-where name = 'GTA'), 
+where name = 'Minecraft'), 
 'Yes', 
-'Yes')
- as 'GTA is in store';
+'No')
+ as 'Minecraft in store';
 
  \! echo 'Is GTA 5 avalible in the store?'
 select if(exists(
@@ -73,7 +73,7 @@ from Item
 where name = 'GTA 5'), 
 'Yes', 
 'No')
- as 'GTA 5 is in store';
+ as 'GTA 5 in store';
 
 \! echo 'What games by Notch does the store have?'
 select item.Name as 'Founded by Notch'
@@ -82,11 +82,18 @@ where item.itemid = game.gameid
 and game.gameid = publisher.publisherid
 and founder = 'Notch';
 
+\! echo 'How much games has Jenny Jo purchased in total?'
+select count(item.itemid) as'Games bought by Jenny Jo'
+from item, OrderItems, order_t, Person
+where item.itemid = orderitems.itemid
+and order_t.ordernumber = orderitems.ordernumber
+and order_t.customerId = person.pid
+and person.name = 'Jenny Jo';
+
 \! echo 'What games are under 20$?'
 select Name 
 from Item 
 where Price <= 20 and Itype='g';
-
 
 \! echo 'What is Alans salary?'
 select employee.salary as 'Alans salary'
@@ -105,6 +112,24 @@ and rating = 'R';
 select substring(birthdate,7,10) as 'Birth year'
 from person
 where name = 'Mclovin';
+
+\! echo 'Can Mclovin buy an R rated game?'
+select if(
+(select substring(birthdate,7,10)
+from person
+where name = 'Mclovin') < year(curdate())-18,
+'Yes',
+'No')
+as 'Is Mclovin 18+?';
+
+\! echo 'Can Ethan Marc buy an R rated game?'
+select if(
+(select substring(birthdate,7,10)
+from person
+where name = 'Ethan Marc') < year(curdate())-18,
+'Yes',
+'No')
+as 'Is Ethan 18+?';
 
 \! echo 'Show all orders from 2021'
 select *
@@ -127,11 +152,47 @@ from item, OrderItems
 where item.itemid = orderitems.itemid
 and ordernumber = 19;
 
+\! echo 'Who is a cashier at the store?'
+select name as 'Cashiers'
+from person,employee
+where person.pid = employee.epid
+and employee.JobTitle = 'Cashier';
+
+\! echo 'Which customers need the gold discount?'
+select name as 'Gold Members'
+from person,customer
+where person.pid = customer.cpid
+and customer.membership = 'Gold';
+
+\! echo 'Which consoles come in white?'
+select name
+from item, console
+where item.itemid = console.consoleid
+and console.color = 'White';
+
 \! echo 'What is the total order number 19'
-select sum(item.price)
+select sum(item.price) as 'Order 19 sum'
 from item, OrderItems
 where item.itemid = orderitems.itemid
 and ordernumber = 19;
+
+\! echo 'What did Karen Right buy in total on 11/30/2020'
+select item.name as 'Items bought'
+from item, OrderItems, order_t, Person
+where item.itemid = orderitems.itemid
+and order_t.ordernumber = orderitems.ordernumber
+and order_t.customerId = person.pid
+and person.name = 'Karen Right'
+and order_t.orderdate = '11/30/2020';
+
+\! echo 'How much did Karen Right pay in total on 11/30/2020'
+select sum(item.price) as 'Karens total'
+from item, OrderItems, order_t, Person
+where item.itemid = orderitems.itemid
+and order_t.ordernumber = orderitems.ordernumber
+and order_t.customerId = person.pid
+and person.name = 'Karen Right'
+and order_t.orderdate = '11/30/2020';
 
 \! echo 'Which employee checked out sally ride on 08/17/2021?'
 select distinct person.name
