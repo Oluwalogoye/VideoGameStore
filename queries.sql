@@ -1,3 +1,11 @@
+/* 
+Group 1: Samuel Solomon, Fritz Paz, Cameron Dolly, Logo Olagoke
+CMS 375 Phase 4
+Implementation
+Query/Update file
+*/
+
+
 USE videoStore;
  
 -- describe each schema
@@ -43,7 +51,8 @@ select *
 from Order_t;
 \! echo 'OrderItems';
 select * 
-from OrderItems;
+from OrderItems
+order by ordernumber;
 \! echo 'Person';
 select * 
 from Person;
@@ -51,13 +60,13 @@ from Person;
 select * 
 from Publisher;
 
-\! echo 'What action games are in the store?'
+-- What action games are in the store?
 select item.Name as 'Action Games'
 from Item, Game
 where item.itemid=game.gameid
 and category ='Action';
 
-\! echo 'Is Minecraft avalible in the store?'
+-- Is Minecraft avalible in the store?
 select if(exists(
 select Name
 from Item
@@ -66,7 +75,7 @@ where name = 'Minecraft'),
 'No')
  as 'Minecraft in store';
 
- \! echo 'Is GTA 5 avalible in the store?'
+ -- Is GTA 5 avalible in the store?
 select if(exists(
 select Name
 from Item
@@ -75,14 +84,14 @@ where name = 'GTA 5'),
 'No')
  as 'GTA 5 in store';
 
-\! echo 'What games by Notch does the store have?'
+-- What games by Notch does the store have?
 select item.Name as 'Founded by Notch'
 from Item, Game, Publisher
 where item.itemid = game.gameid
 and game.gameid = publisher.publisherid
 and founder = 'Notch';
 
-\! echo 'How much games has Jenny Jo purchased in total?'
+-- How much games has Jenny Jo purchased in total?
 select count(item.itemid) as'Games bought by Jenny Jo'
 from item, OrderItems, order_t, Person
 where item.itemid = orderitems.itemid
@@ -90,35 +99,34 @@ and order_t.ordernumber = orderitems.ordernumber
 and order_t.customerId = person.pid
 and person.name = 'Jenny Jo';
 
-\! echo 'What games are under 20$?'
+-- What games are under 20$?
 select Name 
 from Item 
 where Price <= 20 and Itype='g';
 
-\! echo 'What is Alans salary?'
+-- What is Alans salary?
 select concat(employee.salary, '$ a year') as 'Alans salary'
 from Person, Employee
 where employee.epid=person.pid
 and Name = 'Alan';
 
-
-\! echo 'What games are rated R?'
+-- What games are rated R?
 select item.Name as 'R-rated games'
 from Item, Game
 where item.itemid=game.gameid
 and rating = 'R';
 
-\! echo 'What year was Mclovin born?'
+-- What year was Mclovin born?
 select year(str_to_date(person.birthdate, '%m/%d/%Y')) as 'Birth year'
 from person
 where name = 'Mclovin';
 
-\! echo 'How old is Mclovin?'
+-- How old is Mclovin?
 select timestampdiff(year,str_to_date(person.birthdate, '%m/%d/%Y'),curdate()) as 'Age'
 from person
 where name = 'Mclovin';
 
-\! echo 'Can Mclovin buy an R rated game?'
+-- Can Mclovin buy an R rated game?
 select if(
 (select timestampdiff(year,str_to_date(person.birthdate, '%m/%d/%Y'),curdate())
 from person
@@ -127,7 +135,7 @@ where name = 'Mclovin') > 18,
 'No')
 as 'Is Mclovin 18+?';
 
-\! echo 'Can Ethan Marc buy an R rated game?'
+-- Can Ethan Marc buy an R rated game?
 select if(
 (select timestampdiff(year,str_to_date(person.birthdate, '%m/%d/%Y'),curdate())
 from person
@@ -136,52 +144,52 @@ where name = 'Ethan Marc') > 18,
 'No')
 as 'Is Ethan 18+?';
 
-\! echo 'Show all orders from 2019'
+-- Show all orders from 2019
 select *
 from Order_t
 where (orderDate like '%2019');
 
-\! echo 'Update PID 13s birthday'
+-- Update PID 13s birthday
 update person
 set birthdate = '07/28/1971'
 where PID = 13;
 
-\! echo 'Whats the ID for the PS3 V2?'
+-- Whats the ID for the PS3 V2?
 select itemid as 'PS3 V2 ID'
 from item
 where name = 'PS3 V2';
 
-\! echo 'What items are in order number 19'
+-- What items are in order number 19
 select item.name as 'Order 19 items'
 from item, OrderItems
 where item.itemid = orderitems.itemid
 and ordernumber = 19;
 
-\! echo 'Who are the cashiers at the store?'
+-- Who are the cashiers at the store?
 select name as 'Cashiers'
 from person,employee
 where person.pid = employee.epid
 and employee.JobTitle = 'Cashier';
 
-\! echo 'Which customers need the gold discount?'
+-- Which customers need the gold discount?
 select name as 'Gold Members'
 from person,customer
 where person.pid = customer.cpid
 and customer.membership = 'Gold';
 
-\! echo 'Which consoles come in white?'
+-- Which consoles come in white?
 select Name
 from item, console
 where item.itemid = console.consoleid
 and console.color = 'White';
 
-\! echo 'What is the total for order 19?'
+-- What is the total for order 19?
 select concat(sum(item.price), '$' ) as 'Total'
 from item, OrderItems
 where item.itemid = orderitems.itemid
 and ordernumber = 19;
 
-\! echo 'What did Karen Right buy in total on 11/30/2020'
+-- What did Karen Right buy in total on 11/30/2020
 select item.name as 'Items bought'
 from item, OrderItems, order_t, Person
 where item.itemid = orderitems.itemid
@@ -190,7 +198,7 @@ and order_t.customerId = person.pid
 and person.name = 'Karen Right'
 and order_t.orderdate = '11/30/2020';
 
-\! echo 'How much did Karen Right pay in total on 11/30/2020'
+-- How much did Karen Right pay in total on 11/30/2020
 select concat(sum(item.price), '$') as 'Karens total'
 from item, OrderItems, order_t, Person
 where item.itemid = orderitems.itemid
@@ -199,7 +207,7 @@ and order_t.customerId = person.pid
 and person.name = 'Karen Right'
 and order_t.orderdate = '11/30/2020';
 
-\! echo 'Which employee checked out Sally Ride on 08/17/2021?'
+-- Which employee checked out Sally Ride on 08/17/2021?
 select distinct person.Name
 from order_t, person
 where person.pid = order_t.employeeid
