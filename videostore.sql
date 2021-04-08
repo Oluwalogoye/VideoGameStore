@@ -88,7 +88,7 @@ CREATE TABLE Game(
 	GameID int NOT NULL,
 	PublisherID int NOT NULL,
 	Rating varchar(4),
-	Check(Rating in ('PG','PG13','M','E')),
+	Check(Rating in ('PG','PG13','M','E', 'R')),
 	Category varchar(12),
 	Check(Category in ('Action', 'Adventure', 'Fighting', 'Racing', 'Role-playing', 'Shooter', 'Strategy', 'Other')),
 	Constraint Game_pk PRIMARY KEY (GameID),
@@ -193,10 +193,10 @@ INSERT INTO Customer VALUES (20,'Bronze');
 INSERT INTO Customer VALUES (21,'Gold'); 
 INSERT INTO Customer VALUES (22,'Bronze'); 
 INSERT INTO Customer VALUES (23, 'Silver');
-INSERT INTO Customer VALUES (33, 'Gold');
+INSERT INTO Customer VALUES (33, 'Silver');
 INSERT INTO Customer VALUES (34, 'Silver');
-INSERT INTO Customer VALUES (35, 'Bronze');
-INSERT INTO Customer VALUES (36, 'Gold');
+INSERT INTO Customer VALUES (35, 'Silver');
+INSERT INTO Customer VALUES (36, 'Silver');
 
 
 
@@ -427,6 +427,8 @@ INSERT INTO OrderItems Values (16, 11);
 INSERT INTO OrderItems Values (17, 5);
 INSERT INTO OrderItems Values (18, 1);
 INSERT INTO OrderItems Values (19, 8);
+INSERT INTO OrderItems Values (19, 10);
+INSERT INTO OrderItems Values (19, 15);
 INSERT INTO OrderItems Values (20, 13);
 INSERT INTO OrderItems Values (21, 31);
 INSERT INTO OrderItems Values (22, 19);
@@ -557,6 +559,9 @@ INSERT INTO OrderItems Values (146, 14);
 INSERT INTO OrderItems Values (147, 37);
 INSERT INTO OrderItems Values (148, 32);
 INSERT INTO OrderItems Values (149, 1);
+INSERT INTO OrderItems Values (149, 1);
+INSERT INTO OrderItems Values (149, 1);
+INSERT INTO OrderItems Values (149, 1);
 INSERT INTO OrderItems Values (150, 15);
 
 
@@ -612,7 +617,7 @@ INSERT INTO Game Values(20,18,'PG13','Racing');
 INSERT INTO Game Values(21,13,'M','Role-playing');
 INSERT INTO Game Values(22,8,'M','Other');
 INSERT INTO Game Values(23,20,'PG13','Fighting');
-INSERT INTO Game Values(24,2,'PG','Action');
+INSERT INTO Game Values(24,2,'R','Action');
 
 
 
