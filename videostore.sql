@@ -1,5 +1,6 @@
 
 
+
 -- if database exists, delete it and recreate it
 DROP database IF EXISTS videoStore;
 CREATE database videoStore;
@@ -149,7 +150,7 @@ INSERT INTO Person VALUES (36, 'Mclovin', '4079843578', 'mclovin@hawaii.com', '0
 INSERT INTO Person VALUES (16, 'Alice Grace', '1212341098', 'agrace@email.com', '05/01/1998', 't', 't');
 INSERT INTO Person VALUES (17, 'Ron Gold', '4076224132', 'ronlovesbeth@email.com', '07/01/1971', 't', 't');
 INSERT INTO Person VALUES (18, 'Beth Gold', '4076224132', 'bethlovesron@email.com', '07/22/1971', 't', 't');
-INSERT INTO Person VALUES (19, 'Ethan Marc', '4123215566', 'ethanrox@email.com', '04/01/2000', 't', 't');
+INSERT INTO Person VALUES (19, 'Ethan Marc', '4123215566', 'ethanrox@email.com', '04/01/2009', 't', 't');
 INSERT INTO Person VALUES (20, 'Alan', NULL, NULL, '01/01/1922', 't', 't');
 
 
@@ -402,7 +403,7 @@ INSERT INTO Order_t VALUES (145, 10, 3, 0800, '03/01/2021');
 INSERT INTO Order_t VALUES (146, 11, 4, 0100, '03/15/2021');
 INSERT INTO Order_t VALUES (147, 12, 6, 1500, '03/17/2021');
 INSERT INTO Order_t VALUES (148, 15, 17, 1100, '08/17/2020');
-INSERT INTO Order_t VALUES (149, 21, 7, 0800, '11/25/2020');
+INSERT INTO Order_t VALUES (149, 21, 7, 0800, '11/30/2020');
 INSERT INTO Order_t VALUES (150, 22, 19, 2200, '12/15/2020');
 
 
@@ -530,6 +531,8 @@ INSERT INTO OrderItems Values (117, 37);
 INSERT INTO OrderItems Values (118, 8);
 INSERT INTO OrderItems Values (119, 32);
 INSERT INTO OrderItems Values (120, 5);
+INSERT INTO OrderItems Values (120, 16);
+INSERT INTO OrderItems Values (120, 20);
 INSERT INTO OrderItems Values (121, 20);
 INSERT INTO OrderItems Values (122, 34);
 INSERT INTO OrderItems Values (123, 2);
@@ -559,9 +562,9 @@ INSERT INTO OrderItems Values (146, 14);
 INSERT INTO OrderItems Values (147, 37);
 INSERT INTO OrderItems Values (148, 32);
 INSERT INTO OrderItems Values (149, 1);
-INSERT INTO OrderItems Values (149, 1);
-INSERT INTO OrderItems Values (149, 1);
-INSERT INTO OrderItems Values (149, 1);
+INSERT INTO OrderItems Values (149, 2);
+INSERT INTO OrderItems Values (149, 17);
+INSERT INTO OrderItems Values (149, 38);
 INSERT INTO OrderItems Values (150, 15);
 
 
@@ -604,7 +607,7 @@ INSERT INTO Game Values(7,5,'PG13','Racing');
 INSERT INTO Game Values(8,3,'PG','Role-playing');
 INSERT INTO Game Values(9,9,'M','Shooter');
 INSERT INTO Game Values(10,10,'M','Action');
-INSERT INTO Game Values(11,12,'M','Action');
+INSERT INTO Game Values(11,12,'R','Action');
 INSERT INTO Game Values(12,18,'E','Strategy');
 INSERT INTO Game Values(13,11,'PG13','Fighting');
 INSERT INTO Game Values(14,19,'PG13','Adventure');
@@ -612,7 +615,7 @@ INSERT INTO Game Values(15,8,'PG','Other');
 INSERT INTO Game Values(16,17,'E','Other');
 INSERT INTO Game Values(17,7,'E','Adventure');
 INSERT INTO Game Values(18,16,'E','Strategy');
-INSERT INTO Game Values(19,6,'M','Racing');
+INSERT INTO Game Values(19,6,'R','Racing');
 INSERT INTO Game Values(20,18,'PG13','Racing');
 INSERT INTO Game Values(21,13,'M','Role-playing');
 INSERT INTO Game Values(22,8,'M','Other');
@@ -648,3 +651,4 @@ INSERT INTO Console Values(44, 18, 'White');
 INSERT INTO Console Values(45, 19, 'Grey');
 
 commit;
+
