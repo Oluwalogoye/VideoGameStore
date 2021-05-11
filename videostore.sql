@@ -148,7 +148,7 @@ INSERT INTO Person VALUES (23, 'Mary Doe', '4071651122', 'mdoe@email.com', '02/2
 INSERT INTO Person VALUES (33, 'Sierra Doe', '4071734382', 'sdoe@gmail.com', '01/17/1998', 'f', 't');
 INSERT INTO Person VALUES (34, 'Mary Women', '4072856183', NULL, '07/02/1955', 'f', 't');
 INSERT INTO Person VALUES (35, 'Vincent Adultman', '4076548521', 'vadultman@realmail.com', '08/12/1964', 'f', 't');
-INSERT INTO Person VALUES (36, 'Mclovin', '4079843578', 'mclovin@hawaii.com', '06/03/1981', 'f', 't');
+INSERT INTO Person VALUES (36, 'Mclovin', '4079843578', 'mclovin@hawaii.com', '06/03/2002', 'f', 't');
 
 -- Data for person. Customer and Employee
 INSERT INTO Person VALUES (16, 'Alice Grace', '1212341098', 'agrace@email.com', '05/01/1998', 't', 't');
